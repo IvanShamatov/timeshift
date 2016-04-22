@@ -33,11 +33,15 @@ gem 'draper'
 # Getting underscore 
 source 'https://rails-assets.org' do
   gem 'rails-assets-underscore'
+  gem 'rails-assets-bootstrap', '~> 3.3.6'
 end
 
 
 # FileUploader
 gem 'carrierwave'
+
+# erd
+gem 'rails-erd'
 
 # Serializing models from rails-api
 gem 'active_model_serializers'

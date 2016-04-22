@@ -13,46 +13,65 @@
   </script>
 <% end %>
 
+<%= content_for :company do %>
+  <%= @event.company_name %>
+<% end %> 
+
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="background-image: url('<%= @event.header_image.url %>')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1><%=@event.title %></h1>
+                    <hr class="small">
+                    <span class="subheading"><%=@event.headline %></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
 <p id="notice"><%= notice %></p>
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p> <%= @event.short_description %></p>
+        <p><%= @event.full_description %></p>
+        <p>
+          <strong>Starts at:</strong>
+          <%= @event.starts_at %>
+        </p>
+        <p>
+          <strong>Ends at:</strong>
+          <%= @event.ends_at %>
+        </p>
+        <p>
+          <strong>Address:</strong>
+          <%= @event.address.full_street_address %>
+        </p>
+        <p>
+          <strong>Map:</strong>
+          <div style='width: 800px;'>
+            <div id="map" style='width: 800px; height: 400px;'></div>
+          </div>
+        </p>
+        <p>
+          <table class="table table-striped">
+            <% @event.ticket_types.each do |tt| %>
+              <tr>
+                <td><%= tt.title %></td>
+                <td>$ <%= tt.price %></td>
+                <td><%= link_to 'Purchase', add_ticket_path(tt), remote: :true %></td>
+              </tr>
+            <% end %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
-
-<p>
-  <strong>Short description:</strong>
-  <%= @event.short_description %>
-</p>
-
-<p>
-  <strong>Full description:</strong>
-  <%= @event.full_description %>
-</p>
-
-<p>
-  <strong>Starts at:</strong>
-  <%= @event.starts_at %>
-</p>
-
-<p>
-  <strong>Ends at:</strong>
-  <%= @event.ends_at %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @event.address.full_street_address %>
-</p>
-
-<p>
-  <strong>Map:</strong>
-  <div style='width: 800px;'>
-    <div id="map" style='width: 800px; height: 400px;'></div>
+          </table>
+        </p>
+      </div>
+    </div>
   </div>
-</p>
-
-
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+</article>

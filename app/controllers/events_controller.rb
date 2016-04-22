@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @event = @event.includes(:address).first.decorate
+    @event = @event.includes(:address).includes(:company).first.decorate
   end
 
   private

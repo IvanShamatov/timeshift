@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421173107) do
+ActiveRecord::Schema.define(version: 20160422175645) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "city"
@@ -42,6 +42,14 @@ ActiveRecord::Schema.define(version: 20160421173107) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
+  create_table "companies", force: :cascade do |t|
+    t.string   "title"
+    t.string   "name"
+    t.string   "subdomain"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.text     "short_description"
@@ -50,6 +58,28 @@ ActiveRecord::Schema.define(version: 20160421173107) do
     t.datetime "ends_at"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.string   "header_image"
+    t.string   "headline"
+    t.integer  "company_id"
+  end
+
+  create_table "ticket_types", force: :cascade do |t|
+    t.integer  "event_id"
+    t.string   "title"
+    t.integer  "limit"
+    t.decimal  "price"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.integer  "ticket_type_id"
+    t.decimal  "recorded_price"
+    t.string   "code"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
 end
