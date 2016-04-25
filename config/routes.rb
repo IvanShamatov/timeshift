@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  resources :events
+  resources :events do 
+    resources :tickets
+  end
+  
   root "events#index"
 end

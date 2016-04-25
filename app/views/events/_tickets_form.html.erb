@@ -1,0 +1,12 @@
+<%= semantic_form_for [@event, Ticket.new], remote: true do |f| %> 
+  <table class="table table-striped">
+    <% @event.ticket_types.each do |tt| %>
+      <tr>
+        <td><%= tt.title %></td>
+        <td>$ <%= tt.price %></td>
+        <td><%= check_box_tag "ticket_types[]", tt.id %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= f.action :submit, :as => :button %>
+<% end %>

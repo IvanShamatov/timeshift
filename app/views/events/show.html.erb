@@ -59,17 +59,9 @@
             <div id="map" style='width: 800px; height: 400px;'></div>
           </div>
         </p>
-        <p>
-          <table class="table table-striped">
-            <% @event.ticket_types.each do |tt| %>
-              <tr>
-                <td><%= tt.title %></td>
-                <td>$ <%= tt.price %></td>
-                <td><%= link_to 'Purchase', add_ticket_path(tt), remote: :true %></td>
-              </tr>
-            <% end %>
 
-          </table>
+        <p>
+          <%= render "tickets_form" %>
         </p>
       </div>
     </div>
