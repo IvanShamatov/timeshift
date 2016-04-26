@@ -7,8 +7,8 @@ RSpec.describe "PurchaseTickets" do
     FactoryGirl.create(:ticket_type_vip)
     @event = FactoryGirl.create(:event)
     @context = PurchaseTickets.call(
-      ticket_types: ["1", "2"],
-      event: @event
+      ticket_types_ids: ["1", "2"],
+      event_id: @event.id
     )      
   }
 

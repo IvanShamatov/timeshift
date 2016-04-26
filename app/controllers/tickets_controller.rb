@@ -4,8 +4,8 @@ class TicketsController < ApplicationController
   # POST /tickets.json
   def create
     result = PurchaseTickets.call(
-      event: Event.find(params[:event_id]),
-      ticket_types: ticket_types
+      event_id: event_param,
+      ticket_types_ids: ticket_types
     )
 
     if result.success?
@@ -17,5 +17,9 @@ class TicketsController < ApplicationController
 
   private def ticket_types
     params.require(:ticket_types)
+  end
+
+  private def event_param
+    params.require(:event_id)
   end
 end
