@@ -32,7 +32,11 @@ gem 'draper'
 # Interactors
 gem "interactor", "~> 3.0"
 
+# Queues
+gem 'sidekiq'
 
+# QR code generator
+gem 'rqrcode'
 
 
 # Getting underscore 
@@ -75,6 +79,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem "letter_opener"
 end
 
 group :development do

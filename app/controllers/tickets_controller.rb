@@ -3,7 +3,7 @@ class TicketsController < ApplicationController
   # POST /tickets
   # POST /tickets.json
   def create
-    result = PurchaseTickets.call(
+    result = PurchaseTicket.call(
       event_id: event_param,
       params: ticket_params
     )

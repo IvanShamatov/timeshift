@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe "PurchaseTickets" do 
+RSpec.describe "CreateTicket" do 
 
   before {
     FactoryGirl.create(:ticket_type_simple)
     FactoryGirl.create(:ticket_type_vip)
     @event = FactoryGirl.create(:event)
-    @context = PurchaseTickets.call(
+    @context = CreateTicket.call(
       params: {"ticket_type_id"=>"2", "email"=>"admin@admin.com", "first_name"=>"123", "last_name"=>"123"},
       event_id: @event.id
     )      
