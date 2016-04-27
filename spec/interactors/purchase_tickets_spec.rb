@@ -7,7 +7,7 @@ RSpec.describe "PurchaseTickets" do
     FactoryGirl.create(:ticket_type_vip)
     @event = FactoryGirl.create(:event)
     @context = PurchaseTickets.call(
-      ticket_types_ids: ["1", "2"],
+      params: {"ticket_type_id"=>"2", "email"=>"admin@admin.com", "first_name"=>"123", "last_name"=>"123"},
       event_id: @event.id
     )      
   }
@@ -17,8 +17,8 @@ RSpec.describe "PurchaseTickets" do
   end
 
 
-  it ".call should create 2 tickets" do 
-    expect(Ticket.count).to eq(2)
+  it ".call should create 1 ticket" do 
+    expect(Ticket.count).to eq(1)
   end
 
 end

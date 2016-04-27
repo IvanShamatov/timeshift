@@ -5,7 +5,7 @@ class TicketsController < ApplicationController
   def create
     result = PurchaseTickets.call(
       event_id: event_param,
-      ticket_types_ids: ticket_types
+      params: ticket_params
     )
 
     if result.success?
@@ -15,8 +15,8 @@ class TicketsController < ApplicationController
     end
   end
 
-  private def ticket_types
-    params.require(:ticket_types)
+  private def ticket_params
+    params.require(:ticket).permit(:ticket_type_id, :email, :first_name, :last_name)
   end
 
   private def event_param

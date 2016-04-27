@@ -1,12 +1,9 @@
-<%= semantic_form_for [@event, Ticket.new], remote: true do |f| %> 
-  <table class="table table-striped">
-    <% @event.ticket_types.each do |tt| %>
-      <tr>
-        <td><%= tt.title %></td>
-        <td>$ <%= tt.price %></td>
-        <td><%= check_box_tag "ticket_types[]", tt.id %></td>
-      </tr>
-    <% end %>
-  </table>
+<%= semantic_form_for [@event, Ticket.new] do |f| %> 
+  <%= f.inputs do %>
+    <%= f.input :ticket_type, as: :radio, collection: @event.ticket_types.map{|e| ["#{e.title} #{e.price}", e.id ]} %>
+    <%= f.input :email, required: true %>
+    <%= f.input :first_name, required: true %>
+    <%= f.input :last_name, required: true %>
+  <% end %>
   <%= f.action :submit, :as => :button %>
 <% end %>
