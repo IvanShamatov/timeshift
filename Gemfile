@@ -38,6 +38,12 @@ gem 'sidekiq'
 # QR code generator
 gem 'rqrcode'
 
+# Enum support
+gem 'power_enum'
+
+# Seed migration support
+gem 'seed_migrator'
+
 
 # Getting underscore 
 source 'https://rails-assets.org' do
