@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
 
+  devise_for :users
   get 'panel/index'
 
   get 'add_ticket/:ticket_type' => "cart#add_ticket", as: :add_ticket
