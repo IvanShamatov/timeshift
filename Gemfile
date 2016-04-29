@@ -59,7 +59,7 @@ gem 'carrierwave'
 gem 'rails-erd'
 
 # Serializing models from rails-api
-gem 'active_model_serializers'
+gem 'active_model_serializers', github: "rails-api/active_model_serializers"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

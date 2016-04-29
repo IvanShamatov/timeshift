@@ -1,3 +1,7 @@
 class TicketSerializer < ActiveModel::Serializer
-  attributes :id, :ticket_type_id, :recorded_price
+  attributes :ticket_type_id, :email, :name, :used
+
+  def name
+    [object.first_name, object.last_name].join(" ")
+  end
 end
